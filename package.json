@@ -1,0 +1,32 @@
+{
+  "name": "run_markdown",
+  "version": "1.0.0",
+  "description": "Execute code blocks from markdown files",
+  "license": "ISC",
+  "author": "Viraj Agarwal",
+  "type": "module",
+  "main": "dist/src/get-code-from-md.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/src/cli.js",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.15.29",
+    "typescript": "^5.8.3"
+  },
+  "bin": {
+    "run_markdown": "./dist/src/cli.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "package.json"
+  ]
+}
