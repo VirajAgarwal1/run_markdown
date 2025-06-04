@@ -2,22 +2,78 @@
 
 Execute code blocks from markdown files directly from the command line. All execution happens in a clean `/out` directory.
 
-## Installation
+## Installation & Usage
 
-You can use this package without installing it globally by using `npx`:
+### Option 1: Run with npx (No Installation Required)
+
+The easiest way to use `run_markdown` without installing anything:
 
 ```#shell #ignore
 npx run_markdown <markdown-file-path>
 ```
 
-Or install it globally:
+**Example:**
+```#shell #ignore
+npx run_markdown README.md
+npx run_markdown ./docs/tutorial.md
+```
+
+### Option 2: Global Installation via npm
+
+Install globally to use the `run_markdown` command anywhere:
 
 ```#shell #ignore
+# Install globally
 npm install -g run_markdown
+
+# Then use anywhere
 run_markdown <markdown-file-path>
 ```
 
-## Usage
+**Example:**
+```#shell #ignore
+run_markdown README.md
+run_markdown ./docs/tutorial.md
+```
+
+### Option 3: Local Development Installation
+
+If you want to contribute or modify the package:
+
+```#shell #ignore
+# Clone the repository
+git clone https://github.com/VirajAgarwal1/run_markdown.git
+cd run_markdown
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Link for local testing
+npm link
+
+# Now you can use it locally
+run_markdown <markdown-file-path>
+```
+
+**Or run directly without linking:**
+```#shell #ignore
+# After git clone and npm install + npm run build
+node dist/src/cli.js <markdown-file-path>
+```
+
+## Quick Reference
+
+| Installation Method | Command to Run |
+|-------------------|----------------|
+| **npx (no install)** | `npx run_markdown file.md` |
+| **Global npm install** | `run_markdown file.md` |
+| **Local development** | `run_markdown file.md` (after `npm link`) |
+| **Local direct** | `node dist/src/cli.js file.md` |
+
+## Basic Usage
 
 ```#shell #ignore
 run_markdown ./your-file.md
@@ -219,17 +275,48 @@ This will create an `/out` directory with all the demo files and run the demonst
 
 ## Development
 
-To build the project:
+### Building the Project
 
 ```#shell #ignore
 npm run build
 ```
 
-To test locally:
+### Local Development Workflow
 
-```#shell #ignore
-npm link
-run_markdown <file>
+1. **Clone and setup:**
+   ```#shell #ignore
+   git clone https://github.com/VirajAgarwal1/run_markdown.git
+   cd run_markdown
+   npm install
+   ```
+
+2. **Build and test:**
+   ```#shell #ignore
+   npm run build
+   npm link
+   ```
+
+3. **Test your changes:**
+   ```#shell #ignore
+   run_markdown <test-file.md>
+   ```
+
+4. **Or test directly without linking:**
+   ```#shell #ignore
+   node dist/src/cli.js <test-file.md>
+   ```
+
+### Project Structure
+
+```
+run_markdown/
+├── src/
+│   ├── cli.ts              # CLI entry point
+│   └── get-code-from-md.ts # Main logic
+├── handlers/               # Code execution handlers
+├── utils/                  # Utility functions
+├── dist/                   # Compiled JavaScript (after build)
+└── out/                    # Generated files (when running)
 ```
 
 ## License
